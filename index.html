@@ -2,251 +2,511 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Black Knight, Inc. | Financial Ratio Analysis (2022)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <title>Black Knight, Inc. | Financial Analysis 2022</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+  .kpi-card {
+    background:#ffffff;
+    border-radius:16px;
+    padding:2rem 1.75rem;
+    box-shadow:0 14px 32px rgba(0,0,0,0.08);
+    border-top:6px solid #c9a24d;
+    display:flex;
+    flex-direction:column;
+    gap:0.6rem;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .kpi-card:hover {
+    transform: translateY(-6px);
+    box-shadow:0 24px 48px rgba(0,0,0,0.12);
+  }
+  .kpi-label {
+    font-size:0.75rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#6b7280;
+    font-weight:600;
+  }
+  .kpi-value {
+    font-size:2.3rem;
+    font-weight:700;
+    color:#0f1c2e;
+  }
+  .kpi-sub {
+    font-size:0.85rem;
+    color:#6b7280;
+  }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(246,241,231,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0.6rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-inner a {
+    text-decoration: none;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .nav-inner a:hover {
+    color: #e4572e;
+  }
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2rem;
+  }
+    :root {
+      --cream: #f6f1e7;
+      --navy: #0f1c2e;
+      --gold: #c9a24d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
       background: #FAF8F3;
-      color: #1f2933;
-      line-height: 1.6;
+      color: var(--navy);
     }
-
     header {
-      background: #FAF8F3;
-      padding: 3rem 2rem 2rem;
+      background: var(--cream);
+      padding: 5rem 2rem 4rem;
       text-align: center;
-      border-bottom: 2px solid #c9a24d;
     }
-
-    header img {
-      max-width: 260px;
-      margin-bottom: 1rem;
+    .hero-logo {
+      max-width: 520px;
+      width: 90%;
+      margin: 1.5rem auto 1.25rem;
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.12));
     }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin: 0.5rem 0;
-      color: #c85a17;
-    }
-
-    header p {
-      font-size: 1rem;
-      color: #4b5563;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      font-size: 0.85rem;
-      margin: 1.5rem 0 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #1f2933;
-      font-weight: 500;
-    }
-
-    section {
-      padding: 3rem 10%;
-      margin-bottom: 2rem;
-    }
-
-    h2, h3 {
-      font-family: 'Playfair Display', serif;
-      color: #c85a17;
-    }
-
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    h3 {
-      font-size: 1.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .kpi-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 16px;
-      border-top: 5px solid #c9a24d;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .kpi-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .kpi-card h4 {
-      margin: 0;
-      font-size: 0.85rem;
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #6b7280;
+      margin-bottom: 1.5rem;
     }
-
-    .kpi-card p {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-top: 0.5rem;
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      color: #e4572e; /* bold orange */
     }
-
-    .context-box {
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
-    }
-
-    .context-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 1.2rem;
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
       margin-top: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
     }
-
-    .info-card {
-      background: #f6f1e7;
-      padding: 1.2rem;
-      border-radius: 14px;
-      font-size: 0.9rem;
+    .meta {
+      margin-top: 1.75rem;
+      font-size: 0.95rem;
+      color: #374151;
     }
-
-    .exhibit img {
-      width: 100%;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      margin-bottom: 2rem;
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: var(--gold);
+      margin: 2.5rem auto 0;
     }
-
-    footer {
-      border-top: 1px solid #ddd;
-      padding: 2rem 10%;
-      font-size: 0.8rem;
-      color: #4b5563;
+    section {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+      background: #FAF8F3;
     }
-
-    /* Scroll Reveal */
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .citation { cursor: help; font-size: 0.75em; vertical-align: super; color: #7a5a1f; }
+  .citation::after {
+    content: attr(data-cite);
+    position: absolute;
+    background: #0f1c2e;
+    color: #ffffff;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    width: 260px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease;
+  }
+  .citation:hover::after { opacity: 1; }
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+  });
+</script>
 </head>
-
 <body>
 
+
+
 <header>
-  <img src="https://nationalmortgageprofessional.com/sites/default/files/styles/article_full/public/2020-05/Black_Knight_New_Logo_09_13_19.png" alt="Black Knight Logo">
-  <h1>Financial Ratio Analysis</h1>
-  <p>Black Knight, Inc. | Software & Programming Industry | Fiscal Year 2022</p>
+
+  <img 
+    src="https://nationalmortgageprofessional.com/sites/default/files/styles/article_full/public/2020-05/Black_Knight_New_Logo_09_13_19.png?itok=Jra3PPTq" 
+    alt="Black Knight, Inc. Logo" 
+    class="hero-logo"
+  />
+
+  <h2>Financial Ratio Analysis</h2>
+  <div class="meta">Black Knight, Inc. | Software & Programming Industry | Fiscal Year 2022</div>
+  <div class="divider"></div>
 </header>
 
-<nav>
-  <a href="#dashboard">Dashboard</a>
-  <a href="#context">Company Context</a>
-  <a href="#analysis">Ratio Analysis</a>
-  <a href="#strategy">Strategy</a>
-  <a href="#exhibits">Exhibits</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#context">Context</a>
+    <a href="#ratios">Ratios</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#strategy">Strategy</a>
+  </div>
 </nav>
 
-<section id="dashboard" class="reveal">
-  <h2>Key Financial Dashboard</h2>
-  <div class="kpi-grid">
-    <div class="kpi-card"><h4>Profit Margin</h4><p>29.1%</p></div>
-    <div class="kpi-card"><h4>Return on Assets</h4><p>7.8%</p></div>
-    <div class="kpi-card"><h4>Return on Equity</h4><p>17.6%</p></div>
-    <div class="kpi-card"><h4>Current Ratio</h4><p>1.27</p></div>
+<section id="dashboard" class="reveal" style="background:#FAF8F3;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:0.5rem;">Key Financial Dashboard</h3>
+  <p style="max-width:700px;color:#4b5563;margin-bottom:2.5rem;">Snapshot of Black Knight, Inc.’s core financial performance indicators, highlighting scale, profitability, and shareholder returns.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem;">
+
+    <div class="kpi-card">
+      <span class="kpi-label">Revenue</span>
+      <span class="kpi-value">$1.55B</span>
+      <span class="kpi-sub">Recurring software revenue base</span>
+    </div>
+
+    <div class="kpi-card">
+      <span class="kpi-label">Net Income</span>
+      <span class="kpi-value">$452.5M</span>
+      <span class="kpi-sub">High operating leverage</span>
+    </div>
+
+    <div class="kpi-card">
+      <span class="kpi-label">Return on Equity</span>
+      <span class="kpi-value">17.6%</span>
+      <span class="kpi-sub">Above-market shareholder returns</span>
+    </div>
+
+    <div class="kpi-card">
+      <span class="kpi-label">Profit Margin</span>
+      <span class="kpi-value">29.2%</span>
+      <span class="kpi-sub">Strong pricing power</span>
+    </div>
+
   </div>
 </section>
 
-<section id="context" class="reveal">
-  <h2>Company & Financial Context</h2>
-  <div class="context-box">
-    <p>
-      Black Knight, Inc. operates as a software, data, and analytics provider supporting the mortgage lending, servicing,
-      and real estate finance markets. The company delivers integrated, platform-based solutions that support clients
-      across the homeownership lifecycle, emphasizing recurring revenue and long-term client relationships.
-    </p>
+<section id="context" style="background:#FAF8F3;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">Company &amp; Financial Context</h3>
 
-    <div class="context-cards">
-      <div class="info-card"><strong>Company Size:</strong><br>5,001–10,000 employees</div>
-      <div class="info-card"><strong>Associated Members:</strong><br>2,688</div>
-      <div class="info-card"><strong>Headquarters:</strong><br>Jacksonville, FL</div>
-      <div class="info-card"><strong>Industry:</strong><br>IT Services & Consulting</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:2rem;">
+      <div class="kpi-card" style="border-top-color:#0f1c2e;">
+        <span class="kpi-label">Company Size</span>
+        <span class="kpi-value" style="font-size:1.6rem;">5,001 –10,000</span>
+        <span class="kpi-sub">Employees</span>
+      </div>
+      <div class="kpi-card" style="border-top-color:#0f1c2e;">
+        <span class="kpi-label">LinkedIn Members</span>
+        <span class="kpi-value" style="font-size:1.6rem;">2,688</span>
+        <span class="kpi-sub">Associated members</span>
+      </div>
+      <div class="kpi-card" style="border-top-color:#0f1c2e;">
+        <span class="kpi-label">Headquarters</span>
+        <span class="kpi-value" style="font-size:1.6rem;">Jacksonville, FL</span>
+        <span class="kpi-sub">United States</span>
+      </div>
+      <div class="kpi-card" style="border-top-color:#0f1c2e;">
+        <span class="kpi-label">Industry</span>
+        <span class="kpi-value" style="font-size:1.6rem;">IT Services</span>
+        <span class="kpi-sub">& IT Consulting</span>
+      </div>
+    </div>
+
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <p style="line-height:1.7;color:#374151;">Black Knight, Inc. operates within the Software &amp; Programming industry, providing software, data, and analytics solutions that support the mortgage lending, servicing, and real estate finance markets. The company offers integrated technology platforms used across the homeownership life cycle to help clients improve efficiency, manage risk, and retain customers <span class="citation" data-cite="Black Knight, Inc. Form 10-K (2023); Black Knight LinkedIn Company Overview">¹</span>.</p>
+
+    <p style="line-height:1.7;color:#374151;margin-top:1rem;">As a software-focused company, Black Knight generates a significant portion of its revenue from long-term client relationships and recurring contracts. This revenue structure is common among software firms and can contribute to more predictable cash flows and relatively stable profit margins over time <span class="citation" data-cite="Investopedia — Software Business Model; Investopedia — Recurring Revenue">²</span>.</p>
+
+    <p style="line-height:1.7;color:#374151;margin-top:1rem;">From a financial reporting perspective, Black Knight’s balance sheet reflects the characteristics of an intangible-asset-driven business. Investments in proprietary software and data assets make up a meaningful portion of the company’s asset base, which can influence traditional efficiency ratios such as total asset turnover. As a result, these ratios should be interpreted within the context of the firm’s software-based operating model <span class="citation" data-cite="Black Knight, Inc. Form 10-K (2023); Investopedia — Asset Turnover Ratio">³</span>.</p>
+  </div>
+</section>
+
+<section id="ratios" class="reveal" style="background:#FAF8F3;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:2rem;">Ratio Analysis Dashboard</h3>
+
+  <!-- Liquidity -->
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <div class="ratio-group-title">Liquidity Ratios</div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Current Ratio</div>
+      <div class="ratio-value">1.27</div>
+      <div class="ratio-industry">Industry: ~1.6</div>
+      <div class="ratio-badge neutral">MODERATE</div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Quick Ratio</div>
+      <div class="ratio-value">0.76</div>
+      <div class="ratio-industry">Industry: ~1.1</div>
+      <div class="ratio-badge weak">BELOW AVG</div>
+    </div>
+    
+  </div>
+
+  <!-- Leverage -->
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <div class="ratio-group-title">Leverage Ratios</div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Debt Ratio</div>
+      <div class="ratio-value">0.55</div>
+      <div class="ratio-industry">Industry: ~0.57</div>
+      <div class="ratio-badge good">BALANCED</div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Times Interest Earned</div>
+      <div class="ratio-value">2.77×</div>
+      <div class="ratio-industry">Benchmark: &gt;2.0</div>
+      <div class="ratio-badge good">ADEQUATE</div>
+    </div>
+  </div>
+
+  <!-- Efficiency -->
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <div class="ratio-group-title">Efficiency Ratios</div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Receivables Turnover</div>
+      <div class="ratio-value">8.02</div>
+      <div class="ratio-industry">Industry: ~7–8</div>
+      <div class="ratio-badge good">EFFICIENT</div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Total Asset Turnover</div>
+      <div class="ratio-value">0.27</div>
+      <div class="ratio-industry">Industry: ~0.5+</div>
+      <div class="ratio-badge neutral">INTANGIBLE‑HEAVY</div>
+    </div>
+    
+  </div>
+
+  <!-- Profitability -->
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <div class="ratio-group-title">Profitability Ratios</div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Profit Margin</div>
+      <div class="ratio-value">29.1%</div>
+      <div class="ratio-industry">Market: ~5%</div>
+      <div class="ratio-badge good">STRONG</div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Return on Assets</div>
+      <div class="ratio-value">7.8%</div>
+      <div class="ratio-industry">Market: ~5%</div>
+      <div class="ratio-badge good">EFFICIENT</div>
+    </div>
+
+    <div class="ratio-row">
+      <div class="ratio-name">Return on Equity</div>
+      <div class="ratio-value">17.6%</div>
+      <div class="ratio-industry">Market: ~12–15%</div>
+      <div class="ratio-badge good">STRONG</div>
     </div>
   </div>
 </section>
 
-<section id="strategy" class="reveal">
-  <h2>Strategic Conclusions & Recommendations</h2>
-  <div class="context-box">
-    <p>
-      Black Knight demonstrates strong profitability relative to industry benchmarks, supported by a scalable software
-      model and recurring revenue streams. The company maintains balanced leverage and sufficient interest coverage,
-      allowing continued investment without excessive financial risk.
-    </p>
-    <p>
-      Strategically, Black Knight should continue reinvesting in proprietary platforms and analytics capabilities while
-      monitoring liquidity and leverage levels as macroeconomic conditions evolve.
-    </p>
+<section id="analysis" style="background:#FAF8F3;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;color:var(--navy);">Financial Performance Analysis</h3>
+
+  <div class="analysis-grid">
+    <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+      <div class="ratio-group-title">Liquidity Analysis</div>
+      <p style="line-height:1.7;color:#374151;">Black Knight’s liquidity ratios suggest that the company is able to meet its short-term obligations, even though both the current and quick ratios are slightly below typical industry averages. A current ratio above 1 generally indicates that a firm has enough current assets to cover short-term liabilities, while the quick ratio provides a more conservative view of liquidity <span class="citation" data-cite="Investopedia — Current Ratio; Investopedia — Quick Ratio">⁴</span>.</p>
+    </div>
+
+    <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+      <div class="ratio-group-title">Leverage Analysis</div>
+      <p style="line-height:1.7;color:#374151;">The company’s leverage ratios indicate a balanced use of debt financing. Black Knight’s debt ratio aligns closely with industry norms, and its interest coverage suggests that operating income is sufficient to meet interest obligations, reducing financial risk <span class="citation" data-cite="Investopedia — Debt Ratio; Investopedia — Times Interest Earned">⁵</span>.</p>
+    </div>
+
+    <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+      <div class="ratio-group-title">Efficiency Analysis</div>
+      <p style="line-height:1.7;color:#374151;">Efficiency ratios highlight both strengths and structural characteristics of Black Knight’s business model. Receivables turnover aligns with industry expectations, while lower total asset turnover is typical for software companies whose assets are largely intangible rather than physical <span class="citation" data-cite="Investopedia — Receivables Turnover; Investopedia — Asset Turnover Ratio">⁶</span>.</p>
+    </div>
+
+    <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+      <div class="ratio-group-title">Profitability Analysis</div>
+      <p style="line-height:1.7;color:#374151;">Profitability represents one of Black Knight’s strongest financial areas. The company’s profit margin, return on assets, and return on equity exceed general market averages, indicating effective cost control and efficient use of capital, which are common among scalable software businesses <span class="citation" data-cite="Investopedia — Profit Margin; Investopedia — ROA; Investopedia — ROE">⁷</span>.</p>
+    </div>
   </div>
 </section>
 
-<section id="exhibits" class="reveal">
-  <h2>Exhibits</h2>
+<section id="strategy" style="background:#FAF8F3;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">Strategic Conclusions &amp; Recommendations</h3>
 
-  <div class="exhibit">
-    <p><strong>Exhibit A: Selected Financial Ratios (2022)</strong></p>
-    <img src="exhibit-a-ratios.png" alt="Exhibit A Ratios">
-  </div>
+  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
+    <p style="line-height:1.7;color:#374151;">Overall, Black Knight’s financial performance reflects many characteristics of a mature software company. Strong profitability metrics suggest effective cost management and value creation through scalable technology platforms <span class="citation" data-cite="Investopedia — Profit Margin; Investopedia — Software Business Model">⁸</span>.</p>
 
-  <div class="exhibit">
-    <p><strong>Exhibit B: Industry Benchmark Comparison</strong></p>
-    <img src="exhibit-b-ratios.png" alt="Exhibit B Benchmarks">
+    <p style="line-height:1.7;color:#374151;margin-top:1rem;">The firm’s balanced capital structure supports continued investment in software and data capabilities while maintaining manageable financial risk, as reflected in its leverage and interest coverage ratios <span class="citation" data-cite="Investopedia — Capital Structure; Black Knight, Inc. Form 10-K (2023)">⁹</span>.</p>
+
+    <p style="line-height:1.7;color:#374151;margin-top:1rem;">Strategically, Black Knight should continue focusing on strengthening its core platforms, supporting long-term client relationships, and maintaining financial discipline. This approach positions the company to support sustainable shareholder value over time <span class="citation" data-cite="Black Knight, Inc. Form 10-K (2023)">¹⁰</span>.</p>
   </div>
 </section>
 
-<footer>
-  <p><strong>References</strong></p>
-  <p>Black Knight, Inc. (2023). <em>Form 10-K: Annual Report for the Fiscal Year Ended December 31, 2022</em>. U.S. Securities and Exchange Commission.</p>
-  <p>Investopedia. (2024). Financial Ratio Analysis.</p>
-  <p>NYU Stern School of Business. Industry Financial Ratios.</p>
-</footer>
+<section id="exhibits" class="section reveal">
+  <h2>Exhibits & Supporting Financial Data</h2>
+  <p class="section-intro">The following exhibits present selected financial ratios and consolidated financial statement metrics for Black Knight, Inc. These tables support the ratio analysis and interpretations discussed throughout the dashboard and are derived from the company’s Form 10‑K filings.</p>
+
+  <div class="exhibit-card">
+    <h3>Exhibit A: Selected Financial Performance Ratios (As of December 31, 2022)</h3>
+    <img src="./861e7c04-d443-4466-be0c-c29666e04979.png" alt="Selected Financial Performance Ratios for Black Knight, Inc." class="exhibit-image" />
+    <p class="exhibit-caption">This exhibit summarizes liquidity, leverage, efficiency, and profitability ratios for Black Knight, Inc. compared to Software & Programming industry benchmarks.</p>
+  </div>
+
+  <div class="exhibit-card">
+    <h3>Exhibit B: Selected Financial Metrics from Consolidated Financial Statements (2021–2022)</h3>
+    <img src="./3d69b0ef-17d0-4eda-85c5-6ebfb15af5fe.png" alt="Selected Financial Metrics from Consolidated Financial Statements" class="exhibit-image" />
+    <p class="exhibit-caption">This exhibit presents key income statement, balance sheet, and cash flow figures used to calculate and interpret the financial ratios discussed in this analysis.</p>
+  </div>
+</section>
+
+<section id="references" class="section">
+  <div style="height:1px;background:rgba(15,28,46,0.15);max-width:1100px;margin:0 auto 2rem;"></div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:0.75rem;">References</h3>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Black Knight, Inc. (2023). <em>Form 10-K: Annual Report for the Fiscal Year Ended December 31, 2022</em>. U.S. Securities and Exchange Commission.</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Damodaran, A. (2023). <em>Industry financial ratios: Software (systems & applications)</em>. NYU Stern School of Business.</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Black Knight, Inc. (n.d.). <em>Company overview.</em>. https://www.blackknightinc.com</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Black Knight, Inc. (n.d.). <em>LinkedIn company page.</em>. https://www.linkedin.com/company/black-knight-inc</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">CSIMarket. (n.d.). <em>Software industry financial ratios.</em>. https://csimarket.com</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Investopedia. (n.d.). <em>Financial ratio analysis.</em>. https://www.investopedia.com/terms/r/ratioanalysis.asp</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Investopedia. (n.d.). <em>Liquidity ratios.</em>. https://www.investopedia.com/terms/l/liquidityratio.asp</p>
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Investopedia. (n.d.). <em>Profitability ratios.</em>. https://www.investopedia.com/terms/p/profitabilityratios.asp</p>
+  
+<style>
+  .ratio-card {
+    background:#ffffff;
+    border-radius:14px;
+    padding:1.5rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    border-left:6px solid #e4572e;
+    font-size:1.1rem;
+  }
+  .ratio-card .note {
+    display:block;
+    margin-top:0.4rem;
+    font-size:0.85rem;
+    color:#6b7280;
+  }
+.ratio-group {
+    margin-bottom: 3rem;
+  }
+  .ratio-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ratio-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr;
+    align-items: center;
+    background: #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .ratio-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.10);
+  }
+  .ratio-name { font-weight: 600; }
+  .ratio-value { font-size: 1.25rem; font-weight: 600; }
+  .ratio-industry { font-size: 0.9rem; color: #6b7280; }
+  .ratio-badge {
+    justify-self: end;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .ratio-badge.good { background:#e6f4ee; color:#1f7a5a; }
+  .ratio-badge.neutral { background:#f2efe9; color:#7a5a1f; }
+  .ratio-badge.weak { background:#f7eaea; color:#a33a2b; }
+</style>
 
 <script>
-  const reveals = document.querySelectorAll(".reveal");
-  window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        el.classList.add("active");
+  /* Scroll-reveal animation */
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    revealElements.forEach(el => {
+      const boxTop = el.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        el.classList.add('active');
       }
     });
-  });
-</script>
+  };
 
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
 </body>
 </html>
