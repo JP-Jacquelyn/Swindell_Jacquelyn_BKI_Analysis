@@ -164,6 +164,38 @@
   opacity: 1;
   transform: translateY(0);
 }
+.exhibit-image {
+  width: 100%;
+  max-width: 520px;   /* smaller default size */
+  display: block;
+  margin: 1rem auto 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.exhibit-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 28, 46, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  cursor: zoom-out;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
 
 </style>
 
@@ -181,6 +213,21 @@
 
     reveals.forEach(el => observer.observe(el));
   });
+  <script>
+  function openLightbox(src, alt) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = alt;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
 </script>
 </head>
 <body>
@@ -409,17 +456,6 @@
   </div>
 </section>
 
-<section id="exhibits" style="background:#FAF8F3;">
-  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">
-    Exhibits &amp; Supporting Financial Data
-  </h3>
-
-  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
-
-    <p style="line-height:1.7;color:#374151;">
-      The following exhibits provide supporting financial data used in the ratio analysis of Black Knight, Inc.
-      These exhibits summarize key financial ratios and benchmark comparisons referenced throughout this analysis.
-    </p>
 
  <section id="exhibits" style="background:#FAF8F3;">
   <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">
@@ -435,63 +471,59 @@
 
     <!-- Exhibit A -->
     <p style="line-height:1.7;color:#374151;">
-      <strong>Exhibit A: Selected Financial Ratios (Fiscal Year 2022)</strong>
+      <strong>Exhibit A | Consolidated Balance Sheets</strong>
     </p>
     <img 
-      src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_a_ratios.png"
-      alt="Exhibit A – Selected Financial Ratios"
-      style="width:100%;max-width:900px;border-radius:14px;
-             box-shadow:0 10px 30px rgba(0,0,0,0.12);
-             margin:1rem 0 2.5rem;"
-    />
+  src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_a_ratios.png"
+  alt="Exhibit A – Consolidated Balance Sheets"
+  class="exhibit-image"
+  onclick="openLightbox(this.src, this.alt)"
+/>
+
 
     <!-- Exhibit B -->
     <p style="line-height:1.7;color:#374151;">
-      <strong>Exhibit B: Industry Benchmark Comparison</strong>
+      <strong>Exhibit B | Consolidated Statement of Earnings and Comprehensive Earnings</strong>
     </p>
     <img 
       src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_b_ratios.png"
-      alt="Exhibit B – Industry Benchmark Comparison"
-      style="width:100%;max-width:900px;border-radius:14px;
-             box-shadow:0 10px 30px rgba(0,0,0,0.12);
-             margin:1rem 0 2.5rem;"
-    />
+      alt="Exhibit B – Consolidated Statement of Earnings and Comprehensive Earnings"
+      class="exhibit-image"
+      onclick="openLightbox(this.src, this.alt)"
+/>
 
     <!-- Exhibit C -->
     <p style="line-height:1.7;color:#374151;">
-      <strong>Exhibit C: Liquidity Ratio Breakdown</strong>
+      <strong>Exhibit C | Consolidated Statement of Cash Flows</strong>
     </p>
     <img 
       src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_c_ratios.png"
-      alt="Exhibit C – Liquidity Ratios"
-      style="width:100%;max-width:900px;border-radius:14px;
-             box-shadow:0 10px 30px rgba(0,0,0,0.12);
-             margin:1rem 0 2.5rem;"
-    />
+      alt="Exhibit C – Consolidated Statement of Cash Flows"
+      class="exhibit-image"
+      onclick="openLightbox(this.src, this.alt)"
+/>
 
     <!-- Exhibit D -->
     <p style="line-height:1.7;color:#374151;">
-      <strong>Exhibit D: Efficiency Ratio Breakdown</strong>
+      <strong>Exhibit D | Selected Financial Metrics from Consolidated Financial Statements</strong>
     </p>
     <img 
       src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_d_ratios.png"
-      alt="Exhibit D – Efficiency Ratios"
-      style="width:100%;max-width:900px;border-radius:14px;
-             box-shadow:0 10px 30px rgba(0,0,0,0.12);
-             margin:1rem 0 2.5rem;"
-    />
+      alt="Exhibit D – Selected Financial Metrics from Consolidated Financial Statements"
+      class="exhibit-image"
+      onclick="openLightbox(this.src, this.alt)"
+/>
 
     <!-- Exhibit E -->
     <p style="line-height:1.7;color:#374151;">
-      <strong>Exhibit E: Profitability Ratio Breakdown</strong>
+      <strong>Exhibit E | Selected Financial Performance Ratios</strong>
     </p>
     <img 
       src="https://jp-jacquelyn.github.io/Swindell_Jacquelyn_BKI_Analysis/exhibit_e_ratios.png"
-      alt="Exhibit E – Profitability Ratios"
-      style="width:100%;max-width:900px;border-radius:14px;
-             box-shadow:0 10px 30px rgba(0,0,0,0.12);
-             margin-top:1rem;"
-    />
+      alt="Exhibit E – Selected Financial Performance Ratios"
+      class="exhibit-image"
+      onclick="openLightbox(this.src, this.alt)"
+/>
 
   </div>
 </section>
@@ -511,8 +543,7 @@
 
    <div style="height:1px;background:rgba(15,28,46,0.15);max-width:1100px;margin:0 auto 2rem;"></div>
   <footer>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:0.75rem;">References</h3>
-  Financial Ratio Analysis Project • Prepared by Jacquelyn Swindell • Academic Use Only
+  <p style="font-size:0.85rem;color:#4b5563;line-height:1.6;">Financial Ratio Analysis Project • Prepared by Jacquelyn Swindell • Academic Use Only
 </footer>  
   
 <style>
@@ -589,5 +620,9 @@
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll();
 </script>
+  <div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" alt="">
+</div>
+
 </body>
 </html>
