@@ -282,7 +282,7 @@
 
     reveals.forEach(el => observer.observe(el));
   });
-  <script>
+
   function openLightbox(src, alt) {
     const lightbox = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
@@ -296,7 +296,6 @@
     document.getElementById('lightbox').style.display = 'none';
     document.body.style.overflow = '';
   }
-
 </script>
 </head>
 <body>
@@ -402,8 +401,8 @@
 <section id="ratios" class="reveal" style="background:#FAF8F3;">
   <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:0.5rem;">Ratio Analysis Dashboard</h3>
 <p class="dashboard-subtext">
-  Comparative assessments are based on the Software &amp; Programming industry ratios provided in the
-  <a href="#exhibits" class="inline-link">exhibits section</a>.
+  Industry benchmarks reflect Software & Programming sector averages provided in the assignment
+  <a href="#exhibits" class="inline-link">exhibits</a>.
   <p style="margin-bottom:1.25rem;">
 </p>
 
@@ -496,6 +495,9 @@
 
 <section id="analysis" style="background:#FAF8F3;">
   <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;color:var(--navy);">Financial Performance Analysis</h3>
+<p style="max-width:800px;color:#4b5563;margin-top:0.75rem;">
+  The following assessment synthesizes Black Knight’s ratio analysis by highlighting key financial strengths and areas of risk relative to industry benchmarks.
+</p>
 
   <div class="analysis-grid">
     <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
@@ -657,7 +659,9 @@
       class="exhibit-image"
       onclick="openLightbox(this.src, this.alt)"
 />
-
+<p style="text-align:center;margin-top:2.5rem;">
+  <a href="#dashboard" class="inline-link">↑ Back to Dashboard</a>
+</p>
   </div>
 </section>
 
