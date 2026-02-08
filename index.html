@@ -73,7 +73,85 @@
       --cream: #f6f1e7;
       --navy: #0f1c2e;
       --gold: #c9a24d;
-    }
+    }/* ===========================
+   MOBILE RESPONSIVENESS
+   =========================== */
+
+@media (max-width: 900px) {
+
+  /* Reduce section padding */
+  section {
+    padding: 2.25rem 1.25rem;
+  }
+
+  /* Header spacing */
+  header {
+    padding: 3.5rem 1.25rem 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  /* KPI grid stacks better */
+  #dashboard div[style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  }
+
+  .kpi-value {
+    font-size: 2rem;
+  }
+
+  /* Navigation tighter on mobile */
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Ratio rows become vertical cards */
+  .ratio-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .ratio-badge {
+    justify-self: flex-start;
+  }
+
+  /* Analysis grid stacks */
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* Extra small screens (phones) */
+@media (max-width: 500px) {
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  .hero-logo {
+    max-width: 380px;
+  }
+
+  .kpi-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .ratio-group {
+    padding: 1.5rem;
+  }
+
+  footer {
+    padding: 0 1rem;
+  }
+}
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
