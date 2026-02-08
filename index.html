@@ -203,6 +203,59 @@
   color: #6b7280; /* muted gray */
   max-width: 900px;
 }
+.strategy-section {
+  margin-top: 4rem;
+}
+
+/* Strengths & Risks grid */
+.sr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.sr-box {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.sr-box h3 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.sr-box ul {
+  padding-left: 1.25rem;
+}
+
+.sr-box li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Visual distinction */
+.strengths {
+  border-left: 5px solid #16a34a; /* green */
+}
+
+.risks {
+  border-left: 5px solid #dc2626; /* red */
+}
+
+/* Recommendations */
+.recommendations-header {
+  margin-top: 3rem;
+}
+
+.recommendations-box {
+  background: #f6f1e7;
+  padding: 2.25rem;
+  border-radius: 16px;
+  margin-top: 1.5rem;
+  line-height: 1.7;
+}
 
 </style>
 
@@ -474,18 +527,58 @@
   </div>
 </section>
 
-<section id="strategy" style="background:#FAF8F3;">
-  <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">Strategic Conclusions &amp; Recommendations</h3>
+<section id="strategy" class="strategy-section">
+  <h2>Financial Strengths & Risks</h2>
 
-  <div class="ratio-group" style="background:#f6f1e7;padding:2rem;border-radius:18px;">
-    <p style="line-height:1.7;color:#374151;">Overall, Black Knight displays many of the traits of a mature software company, including strong margins and scalable technology platforms. That said, its liquidity and leverage metrics indicate less financial flexibility than many of its industry peers, which could become a concern in less favorable market conditions. <span class="citation" data-cite="Investopedia — Profit Margin; Investopedia — Software Business Model">⁸</span>.</p>
+  <div class="sr-grid">
+    <!-- Strengths -->
+    <div class="sr-box strengths">
+      <h3>Strengths</h3>
+      <ul>
+        <li><strong>Strong Profit Margins</strong> | Black Knight’s profit margin exceeds the Software & Programming industry average, reflecting effective cost control and pricing power driven by scalable software platforms (Black Knight, Inc., 2023).</li>
 
-    <p style="line-height:1.7;color:#374151;margin-top:1rem;">Looking ahead, Black Knight would benefit from improving liquidity and strengthening interest coverage to reduce financial risk and create more breathing room on the balance sheet. <span class="citation" data-cite="Investopedia — Capital Structure; Black Knight, Inc. Form 10-K (2023)">⁹</span>.</p>
+        <li><strong>Scalable, Recurring Revenue Model</strong> | The company benefits from long-term client relationships and recurring revenue, which are common strengths among mature software and data analytics firms.</li>
 
-    <p style="line-height:1.7;color:#374151;margin-top:1rem;">At the same time, continuing to invest in core platforms and long-term client relationships remains important. Balancing financial discipline with operational efficiency will be key to supporting sustainable shareholder value over time. <span class="citation" data-cite="Black Knight, Inc. Form 10-K (2023)">¹⁰</span>.</p>
+        <li><strong>Effective Receivables Management</strong> | Receivables turnover is higher than the industry average, indicating efficient credit policies and timely collection of customer payments.</li>
+
+        <li><strong>Stable Operating Performance</strong> | Consistent operating cash flows support ongoing operations and help offset tighter liquidity conditions.</li>
+      </ul>
+    </div>
+
+    <!-- Risks -->
+    <div class="sr-box risks">
+      <h3>Risks</h3>
+      <ul>
+        <li><strong>Limited Liquidity Flexibility</strong> | Current and quick ratios are well below industry averages, indicating a relatively small short-term financial cushion and reliance on steady operating cash flows (Ross et al., 2022).</li>
+
+        <li><strong>Higher Leverage Than Peers</strong> | Black Knight relies more heavily on debt financing than the industry average, increasing overall financial risk.</li>
+
+        <li><strong>Lower Interest Coverage</strong> | The firm’s times interest earned ratio is significantly below peer benchmarks, leaving less margin of safety if earnings decline or interest rates rise (Black Knight, Inc., 2023).</li>
+
+        <li><strong>Low Asset Utilization</strong> | Total asset turnover is well below industry norms, limiting returns on assets and equity despite strong profit margins (Damodaran, 2023).</li>
+
+        <li><strong>Sensitivity to Earnings Volatility</strong> | Elevated leverage and tighter liquidity increase vulnerability to short-term operational or market disruptions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <h2 class="recommendations-header">Recommendations</h2>
+
+  <div class="recommendations-box">
+    <p>
+      To enhance its financial stability, Black Knight should focus on strengthening its liquidity position, allowing for greater short-term flexibility and reducing dependence on consistent operating cash flows. Gradual improvements in working capital management and modest increases in cash reserves can help the company better absorb unexpected financial pressures.
+    </p>
+
+    <p>
+      Additionally, enhancing interest coverage through careful debt management or continued growth in operating income would help reduce overall financial risk and increase the company's margin of safety. It is also important for Black Knight to maintain strong cost controls and discipline in pricing to preserve its above-average profit margins.
+    </p>
+
+    <p>
+      While the firm's software-based business model contributes to lower asset turnover, ongoing efforts to better leverage existing assets can lead to improved returns on assets and equity over time. Striking a balance between financial discipline and continued investment in core software platforms and data capabilities will be crucial in supporting long-term competitiveness and enhancing shareholder value.
+    </p>
   </div>
 </section>
-
 
  <section id="exhibits" style="background:#FAF8F3;">
   <h3 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.5rem;">
